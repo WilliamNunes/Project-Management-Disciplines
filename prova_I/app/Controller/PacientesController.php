@@ -74,6 +74,8 @@ class PacientesController extends AppController {
           }else{
             // Persistir os dados
             if ($this->Paciente->save($this->request->data)) {
+              $pc = $this->validar();
+              $this->Session->write('Paciente', $pc);
               $this->Flash->set('Usuário editado com sucesso !!!');
               $this->redirect(array('action' => 'editar'));
             }
@@ -81,6 +83,8 @@ class PacientesController extends AppController {
         }else{
           // Persistir os dados
           if ($this->Paciente->save($this->request->data)) {
+            $pc = $this->validar();
+            $this->Session->write('Paciente', $pc);
             $this->Flash->set('Usuário editado com sucesso !!!');
             $this->redirect(array('action' => 'editar'));
           }
