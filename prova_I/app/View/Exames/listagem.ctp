@@ -5,6 +5,7 @@
       <div class="list-group">
         <a href="<?php echo Router::url(array('controller' => 'exames', 'action' => 'solic')); ?>" class="list-group-item">Solicitar Exame</a>
         <a class="active list-group-item">Exames Solicitados</a>
+        <a href="<?php echo Router::url(array('controller' => 'pacientes', 'action' => 'editar')); ?>" class="list-group-item">Editar perfil</a>
       </div>
   </div>
 </div>

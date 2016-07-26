@@ -63,5 +63,32 @@ class ExamesController extends AppController {
 
   }
 
+  public function examgeral(){
+      $this->set('exames', $this->Exame->find('all', array('order' => array('Exame.data DESC'), array('recursive' => 2))));
+  }
+
+  public function edit($id){
+
+    if (empty($this->request->data)) {
+      $this->set('exames', $this->Exame->find('all', array('conditions'=> array('Exame.id' => $id))));
+    }else {
+      $this->request->data['Exame']['id'] = $id;
+          // Persistir os dados
+          if ($this->Exame->save($this->request->data)) {
+              $this->Flash->set('Exame editado com sucesso !!!');
+              $this->set('exames', $this->Exame->find('all', array('conditions'=> array('Exame.id' => $id))));
+            }
+      }
+    }
+
+
+    public function delet($id){
+      $this->Exame->delete($id);
+
+      $this->Flash->set('Exame excluído com Sucesso !');
+      $this->redirect(array('action' => 'examgeral'));
+
+    }
+
 }
 ?>

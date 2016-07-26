@@ -33,11 +33,12 @@ App::uses('Controller', 'Controller');
 
 class AppController extends Controller {
 
-    public function beforeFilter() {
-      if($this->action == "geral") {
+    public function afterFilter() {
+      if(in_array($this->action, array('geral', 'solic', 'consolic', 'listagem', 'editar'))) {
           $this->autenticar();
       }
     }
+
     public function autenticar() {
       if (! $this->Session->check('Paciente')) {
         $this->redirect(array('controller' => 'pacientes',

@@ -62,16 +62,13 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 
 			<?php echo $this->fetch('content'); ?>
 			</br>
-			</br>
 		</div>
 	</div>
 	<footer>
-		<div class="row">
-				<div class="col-md-3 col-sm-offset-9">
-					<p><h4>SisLab - soluções laboratoriais </h4></p>
-					<p>sislabcontato@sac.com.br</p>
-					<p>(31) 3853-1313</p>
-				</div>
+		<div class="col-md-3 col-sm-offset-9">
+			<p><h4>SisLab - soluções laboratoriais </h4></p>
+			<p>sislabcontato@sac.com.br</p>
+			<p>(31) 3853-1313</p>
 		</div>
 	</footer>
 </body>

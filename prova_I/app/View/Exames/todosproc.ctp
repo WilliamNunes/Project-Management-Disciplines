@@ -6,6 +6,8 @@
         <a href="<?php echo Router::url(array('controller' => 'exames', 'action' => 'listexam')); ?>" class="list-group-item">Exames Solicitados</a>
         <a href="<?php echo Router::url(array('controller' => 'pacientes', 'action' => 'listpac')); ?>" class="list-group-item">Pacientes</a>
         <a href="<?php echo Router::url(array('controller' => 'exames', 'action' => 'listageral')); ?>" class="active list-group-item">Total Exames Solic.</a>
+        <a href="<?php echo Router::url(array('controller' => 'procedimentos', 'action' => 'procgeral')); ?>" class="list-group-item">Add/Edit/Del Procedimentos</a>
+        <a href="<?php echo Router::url(array('controller' => 'exames', 'action' => 'examgeral')); ?>" class="list-group-item">Edit/Del - Exames</a>
       </div>
   </div>
 </div>

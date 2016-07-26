@@ -1,11 +1,12 @@
 <div class="col-md-6 col-sm-offset-4">
     <div class="form-top">
         <div class="form-top-left">
-          <h3><strong>Identificação</strong></h3>
+          <h2><strong>Identificação</strong></h2>
           <p><h4>Conecte-se !</h4></p>
           <p> Por favor, complete os seus dados:</p>
         </div>
       </div>
+      <br/><h4>...É novo por aqui ? <a href="<?php echo Router::url('/pacientes/index_cadastro'); ?>"><strong>Cadastre-se !</strong></h4></a>
       <div class="form-bottom">
         <?php echo $this->Form->create('Paciente', array('url' => 'login' ));?>
           <div class="form-group">

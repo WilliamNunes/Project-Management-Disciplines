@@ -56,5 +56,66 @@ class PacientesController extends AppController {
     $this->set('pacientes', $this->Paciente->find('all', array('order' => array('Paciente.nome ASC'))));
   }
 
+  public function editar(){
+    $id = $this->Session->read('Paciente');
+    $paciente = $this->Paciente->find('all', array('conditions'=> array('Paciente.id' => $id[0]['Paciente']['id'])));
+
+    if (empty($this->request->data)) {
+
+      $this->set('pacientes', $this->Paciente->find('all', array('conditions'=> array('Paciente.id' => $id[0]['Paciente']['id']))));
+
+    }else {
+      $this->request->data['Paciente']['id'] = $id[0]['Paciente']['id'];
+
+      if($this->request->data['Paciente']['login'] != $paciente[0]['Paciente']['login']){
+          if($this->Paciente->find('all', array('conditions'=> array('Paciente.login' => $this->request->data['Paciente']['login'])))){
+            echo "<script language='javascript'>window.alert('Login já está sendo utilizado !!!')</script>";
+            $this->set('pacientes', $this->Paciente->find('all', array('conditions'=> array('Paciente.id' => $id[0]['Paciente']['id']))));
+          }else{
+            // Persistir os dados
+            if ($this->Paciente->save($this->request->data)) {
+              $this->Flash->set('Usuário editado com sucesso !!!');
+              $this->redirect(array('action' => 'editar'));
+            }
+          }
+        }else{
+          // Persistir os dados
+          if ($this->Paciente->save($this->request->data)) {
+            $this->Flash->set('Usuário editado com sucesso !!!');
+            $this->redirect(array('action' => 'editar'));
+          }
+        }
+      }
+    }
+
+  public function index_cadastro(){
+
+    if (empty($this->request->data)) {
+
+    }
+
+    else{
+      if($this->Paciente->find('all', array('conditions'=> array('Paciente.login' => $this->request->data['Paciente']['login'])))){
+        echo "<script language='javascript'>window.alert('Login já está sendo utilizado !!!')</script>";
+        $this->set('pacientes', $this->request->data);
+      }else{
+        // Persistir os dados
+        if ($this->Paciente->save($this->request->data)) {
+            $this->Flash->set('Você foi cadastrado com sucesso ! Faça login !!!');
+            $this->redirect(array('action' => 'index_login'));
+        }
+      }
+    }
+  }
+
+  public function delet(){
+    $id = $this->Session->read('Paciente');
+
+    $this->Paciente->delete($id[0]['Paciente']['id']);
+
+    $this->Flash->set('Paciente excluído com Sucesso !');
+    $this->redirect(array('action' => 'logout'));
+  }
+
 }
  ?>
